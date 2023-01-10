@@ -6,11 +6,19 @@ class Robot
     # attr_writer :function, :weapons
     attr_accessor :function, :weapons
 
+    @@robots = []
+
+    def self.all_robots
+        @@robots
+    end
+
     # function weapons
     def initialize(function, weapons, name)
         @function = function
         @weapons = weapons
         @name = name
+
+        @@robots << self
     end
 
     def beep_boop
@@ -20,10 +28,6 @@ class Robot
     def whoami
         self
     end
-
-    # beep_boop_three_times = 3.times { puts self.beep_boop }
-    # puts "This is self:"
-    # puts self
 
     def self.transform # class method
         "GATHER UP YOUR #{self.name}S AND ROLL OUT"
